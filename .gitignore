@@ -21,6 +21,12 @@ build/
 build-iPhoneOS/
 build-iPhoneSimulator/
 
+# Ignore Byebug/Bash/etc command history file.
+/.*_hist*
+
+# Ignore mac .DS_Store files
+.DS_Store
+
 ## Specific to RubyMotion (use of CocoaPods):
 #
 # We recommend against adding the Pods directory to your .gitignore. However
