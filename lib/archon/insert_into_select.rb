@@ -27,9 +27,9 @@ module Archon
           column_name = if projection.is_a? Arel::Attributes::Attribute
                           projection.name
                         elsif projection.is_a? Arel::Nodes::As
-                          projection.right.delete('"', '').to_sym
+                          projection.right.delete('"').to_sym
                         elsif projection.is_a? Arel::Nodes::NamedFunction
-                          projection.alias.delete('"', '').to_sym
+                          projection.alias.delete('"').to_sym
                         else
                           raise "Don't know how to..."
                         end
