@@ -20,15 +20,9 @@ module Archon
   module PowerOverwhelming
     extend ActiveSupport::Concern
 
-    # = Archon::PowerOverwhelming::ClassMethods
-    # Some methods applied to model classes and ActiveRecord::Relation objects
-    module ClassMethods
-      def create_from(selectish)
-        transaction do
-          timestamp = ActiveRecord::Base.connection.quoted_date(Time.now)
-          timestamp = Arel::Nodes::SqlLiteral.new("'#{timestamp}'")
-        end
-      end
+    included do
+      include Archon::ActiveRecord::CreateFromSelection,
+              Archon::ActiveRecord::LeftJoinScoping
     end
   end
 end
