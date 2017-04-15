@@ -24,12 +24,16 @@ module Archon
       self.columns.concat options.fetch(
         :columns,
         ast.select.projections.map do |projection|
-          column_name = if projection.is_a? Arel::Attributes::Attribute
+          column_name = case projection
+                        when Arel::Attributes::Attribute
                           projection.name
-                        elsif projection.is_a? Arel::Nodes::As
+                        when Arel::Nodes::As
                           projection.right.delete('"').to_sym
-                        elsif projection.is_a? Arel::Nodes::NamedFunction
+                        when Arel::Nodes::NamedFunction
                           projection.alias.delete('"').to_sym
+                        when String
+                          _table, name = projection.split('.') if projection['.']
+                          (name || projection).delete('"').to_sym
                         else
                           raise "Don't know how to..."
                         end

@@ -10,6 +10,7 @@ module Archon
   autoload :Nodes
   autoload :InsertIntoSelect
   autoload :PowerOverwhelming
+  autoload :Visitors
 
   def self.method_missing(called_method_name, *arguments, &block)
     # Call super to raise a method missing error if no class was loaded:
