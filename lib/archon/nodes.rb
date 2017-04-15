@@ -6,6 +6,6 @@ module Archon
 
     autoload :Coalesce
     autoload :PopulatedRecordset
-    autoload :ValuesList
+    autoload :Values
   end
 end

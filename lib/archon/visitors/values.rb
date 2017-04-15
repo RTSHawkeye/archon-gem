@@ -1,9 +1,9 @@
 module Archon
   module Visitors
-    module ValuesList
+    module Values
       private
 
-      def visit_Archon_Nodes_ValuesList o, collector
+      def visit_Archon_Nodes_Values o, collector
         collector << 'VALUES '
 
         len_a = o.expressions.length - 1
