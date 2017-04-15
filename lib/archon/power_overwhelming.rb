@@ -27,6 +27,14 @@ module Archon
         transaction do
           timestamp = ActiveRecord::Base.connection.quoted_date(Time.now)
           timestamp = Arel::Nodes::SqlLiteral.new("'#{timestamp}'")
+
+          insert_result = connection.execute Archon.insert_into_select(
+            arel_table, selectish.arel
+          ).to_sql
+
+          Rails.logger.debug "Inserted #{insert_result.cmd_tuples} records " \
+                             "to table '#{arel_table.name}'."
+          insert_result
         end
       end
     end
