@@ -1,4 +1,5 @@
 # Archon
+![Made with Love by Icalia Labs](https://img.shields.io/badge/With%20love%20by-Icalia%20Labs-ff3434.svg)
 
 ARchon: Summoning the powers of ActiveRecord and ARel to wreak havoc
 
