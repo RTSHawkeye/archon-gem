@@ -17,10 +17,10 @@ module Archon
             else
               collector << quote(value).to_s
             end
-            collector << Arel::Visitors::ToSql::COMMA unless ii == len_b
+            collector << ", " unless ii == len_b
           end
           collector << ')'
-          collector << Arel::Visitors::ToSql::COMMA unless i == len_a
+          collector << ", " unless i == len_a
         end
 
         collector
